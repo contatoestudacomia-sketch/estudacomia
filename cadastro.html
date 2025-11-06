@@ -3,86 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estude com IA — Cadastro de Acesso</title>
+  <title>Estude com IA - Cadastro</title>
   <style>
     body {
-      background: linear-gradient(135deg, #0a0f2c, #1b1f5f);
-      font-family: "Poppins", sans-serif;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #29294f);
+      color: white;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      color: #fff;
-      text-align: center;
+      height: 100vh;
+      margin: 0;
     }
 
     .container {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
       width: 90%;
-      max-width: 420px;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+      max-width: 400px;
+      text-align: center;
     }
 
     h1 {
-      color: #00aaff;
-      margin-bottom: 15px;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
     }
 
     input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 10px;
-      outline: none;
-      font-size: 1em;
-      color: #333;
-    }
-
-    input::placeholder {
-      color: #777;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #000;
     }
 
     button {
-      background: #00aaff;
-      border: none;
-      color: #fff;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-size: 1em;
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
       cursor: pointer;
-      transition: 0.3s;
-      width: 100%;
+      transition: background 0.3s;
     }
 
     button:hover {
-      background: #0090dd;
-      transform: translateY(-2px);
+      background-color: #45a049;
     }
 
-    .warning {
-      margin-top: 15px;
-      color: #ffcc66;
-      font-size: 0.9em;
+    .logo {
+      width: 80px;
+      margin-bottom: 15px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Cadastro de Acesso</h1>
-    <p>Preencha seus dados abaixo para receber o conteúdo no e-mail após a confirmação do pagamento.</p>
+    <img src="logo.png" alt="Logo Estude com IA" class="logo">
+    <h1>Cadastro</h1>
+    <p>Preencha seus dados para começar sua jornada com a IA!</p>
 
-    <form action="https://formsubmit.co/contato.estudacomia@gmail.com" method="POST">
-      <input type="text" name="Nome" placeholder="Seu nome completo" required>
-      <input type="email" name="Email" placeholder="Seu melhor e-mail" required>
+    <form action="https://formsubmit.co/contatoestudacomia@gmail.com" method="POST">
+      <!-- Redireciona automaticamente após o envio -->
+      <input type="hidden" name="_next" value="https://contatoestudacomia-sketch.github.io/estudacomia/confirmacao.html">
       <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="confirmacao.html">
-      <button type="submit">Enviar Cadastro</button>
-    </form>
 
-    <p class="warning">⚠️ O conteúdo será enviado somente após a confirmação do pagamento.</p>
+      <input type="text" name="nome" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu e-mail" required>
+
+      <button type="submit">Enviar</button>
+    </form>
   </div>
 </body>
 </html>
