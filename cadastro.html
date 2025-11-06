@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estude com IA — Cadastro de Acesso</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0a0f2c, #1b1f5f);
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #fff;
+      text-align: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 40px;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      color: #00aaff;
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      font-size: 1em;
+      color: #333;
+    }
+
+    input::placeholder {
+      color: #777;
+    }
+
+    button {
+      background: #00aaff;
+      border: none;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #0090dd;
+      transform: translateY(-2px);
+    }
+
+    .warning {
+      margin-top: 15px;
+      color: #ffcc66;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cadastro de Acesso</h1>
+    <p>Preencha seus dados abaixo para receber o conteúdo no e-mail após a confirmação do pagamento.</p>
+
+    <form action="https://formsubmit.co/contato.estudacomia@gmail.com" method="POST">
+      <input type="text" name="Nome" placeholder="Seu nome completo" required>
+      <input type="email" name="Email" placeholder="Seu melhor e-mail" required>
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://seuusuario.github.io/estudecomia/confirmacao.html">
+      <button type="submit">Enviar Cadastro</button>
+    </form>
+
+    <p class="warning">⚠️ O conteúdo será enviado somente após a confirmação do pagamento.</p>
+  </div>
+</body>
+</html>
