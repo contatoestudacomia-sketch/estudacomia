@@ -22,7 +22,6 @@
             padding: 25px;
             font-size: 1.8em;
             font-weight: bold;
-            letter-spacing: 1px;
         }
 
         main {
@@ -68,10 +67,7 @@
             font-size: 1em;
         }
 
-        input[type="file"] {
-            background-color: transparent;
-        }
-
+        /* Botão de enviar */
         button {
             width: 100%;
             padding: 14px;
@@ -87,6 +83,34 @@
 
         button:hover {
             background-color: #00a2d8;
+        }
+
+        /* Botão personalizado de upload */
+        .file-label {
+            display: inline-block;
+            background-color: #00c3ff;
+            color: #0a0f2c;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .file-label:hover {
+            background-color: #00a2d8;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        #file-name {
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: #b0b8ff;
+            text-align: center;
         }
 
         p {
@@ -109,7 +133,10 @@
 <header>Cadastro - Estude com IA</header>
 
 <main>
-    <form action="https://formsubmit.co/contato.estudacomia@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="window.location.href='https://contatoestudacomia-sketch.github.io/estudacomia/confirmacao.html'; return false;">
+    <form action="https://formsubmit.co/contato.estudacomia@gmail.com" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_next" value="https://contatoestudacomia-sketch.github.io/estudacomia/confirmacao.html">
+        <input type="hidden" name="_captcha" value="false">
+
         <h2>Envie seus dados para receber o conteúdo</h2>
         <p>Preencha os campos abaixo com atenção. O conteúdo será enviado para o e-mail informado **após a confirmação do pagamento**.</p>
 
@@ -118,11 +145,14 @@
 
         <label for="email">E-mail</label>
         <input type="email" name="Email" id="email" required placeholder="Digite seu e-mail (receberá o conteúdo aqui)">
-        <p><strong>Por que pedimos seu e-mail?</strong> — É através dele que enviaremos o material digital após a confirmação do pagamento.</p>
+        <p><strong>Por que pedimos seu e-mail?</strong><br>É através dele que enviaremos o material digital após a confirmação do pagamento.</p>
 
         <label for="comprovante">Comprovante de pagamento</label>
+        <label class="file-label" for="comprovante">📎 Escolher comprovante</label>
         <input type="file" name="Comprovante" id="comprovante" accept="image/*,application/pdf" required>
-        <p><strong>Por que pedimos o comprovante?</strong> — Serve para confirmar seu pagamento e garantir o envio do conteúdo de forma segura.</p>
+        <div id="file-name">Nenhum arquivo selecionado</div>
+
+        <p><strong>Por que pedimos o comprovante?</strong><br>Serve para confirmar seu pagamento e garantir o envio do conteúdo de forma segura.</p>
 
         <p><strong>Valor fixo:</strong> R$19,90  
         <br><strong>Envio garantido em até 24 horas</strong> após a confirmação do pagamento.</p>
@@ -132,6 +162,15 @@
 </main>
 
 <footer>© 2025 Estude com IA. Todos os direitos reservados.</footer>
+
+<script>
+    // Mostrar nome do arquivo selecionado
+    const inputFile = document.getElementById('comprovante');
+    const fileNameDisplay = document.getElementById('file-name');
+    inputFile.addEventListener('change', () => {
+        fileNameDisplay.textContent = inputFile.files.length ? inputFile.files[0].name : "Nenhum arquivo selecionado";
+    });
+</script>
 
 </body>
 </html>
