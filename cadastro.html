@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Confirmação de Pagamento | Estude com IA</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro | EstudaComIA</title>
   <style>
     * {
       margin: 0;
@@ -13,204 +13,208 @@
     }
 
     body {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #e2e8f0;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      flex-direction: column;
       min-height: 100vh;
-      padding: 40px 20px;
+      padding: 30px;
     }
 
-    .container {
-      background: #1e293b;
-      padding: 40px 30px;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-      width: 100%;
-      max-width: 450px;
+    h1 {
+      font-size: 2.3em;
+      margin-bottom: 12px;
       text-align: center;
-      animation: fadeIn 0.8s ease-in-out;
+      letter-spacing: 1px;
     }
 
-    .container h1 {
-      font-size: 1.9rem;
-      color: #38bdf8;
-      margin-bottom: 10px;
-    }
-
-    .container p {
-      color: #cbd5e1;
-      font-size: 1rem;
-      margin-bottom: 25px;
+    p.intro {
+      text-align: center;
+      font-size: 1em;
+      max-width: 650px;
+      margin-bottom: 30px;
       line-height: 1.6;
+      opacity: 0.9;
     }
 
-    .pix-box {
-      background: #0f172a;
-      border: 2px solid #38bdf8;
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 20px;
+    .pix-section {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+      width: 100%;
+      max-width: 420px;
+      backdrop-filter: blur(8px);
+    }
+
+    .pix-section p {
+      font-size: 1em;
+      margin-bottom: 10px;
     }
 
     .pix-key {
-      font-size: 0.95rem;
-      color: #38bdf8;
-      word-break: break-all;
-      margin-bottom: 10px;
+      font-weight: 600;
+      font-size: 1em;
+      background: #fff;
+      color: #333;
+      padding: 10px 15px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 5px;
+      letter-spacing: 0.5px;
     }
 
     .copy-btn {
-      background: #38bdf8;
-      color: #0f172a;
+      background: #2563eb;
+      color: #fff;
       border: none;
-      padding: 10px 16px;
       border-radius: 8px;
+      padding: 10px 20px;
+      margin-top: 12px;
       cursor: pointer;
-      font-weight: 600;
+      font-size: 0.95em;
       transition: 0.3s;
-      width: 100%;
     }
 
     .copy-btn:hover {
-      background: #0ea5e9;
+      background: #1e40af;
     }
 
     form {
-      margin-top: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+      background: #ffffff;
+      color: #333;
+      padding: 35px 30px;
+      border-radius: 20px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+      max-width: 420px;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    form:hover {
+      transform: translateY(-3px);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 0.95em;
+      color: #222;
     }
 
     input[type="text"],
     input[type="email"],
     input[type="file"] {
-      background: #0f172a;
-      color: #f1f5f9;
-      border: 1px solid #334155;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 0.95rem;
       width: 100%;
-      transition: border 0.3s;
+      padding: 12px 14px;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      background-color: #f9fafb;
     }
 
     input[type="text"]:focus,
-    input[type="email"]:focus {
-      border-color: #38bdf8;
+    input[type="email"]:focus,
+    input[type="file"]:focus {
+      border-color: #2563eb;
       outline: none;
+      background-color: #fff;
     }
 
     input[type="file"] {
-      border: 2px dashed #38bdf8;
-      text-align: center;
+      padding: 10px;
       cursor: pointer;
-    }
-
-    input[type="file"]::-webkit-file-upload-button {
-      visibility: hidden;
-    }
-
-    input[type="file"]::before {
-      content: 'Escolher comprovante 📎';
-      display: inline-block;
-      background: #38bdf8;
-      color: #0f172a;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-      font-weight: 600;
-    }
-
-    input[type="file"]:hover::before {
-      background: #0ea5e9;
     }
 
     button[type="submit"] {
-      background: #38bdf8;
-      color: #0f172a;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 12px;
+      margin-top: 10px;
+      width: 100%;
+      padding: 14px;
+      background: #2563eb;
+      color: #fff;
       border: none;
       border-radius: 10px;
+      font-size: 1.05em;
+      font-weight: 600;
       cursor: pointer;
       transition: 0.3s;
     }
 
     button[type="submit"]:hover {
-      background: #0ea5e9;
+      background: #1e40af;
     }
 
     footer {
-      margin-top: 30px;
+      margin-top: 40px;
+      font-size: 0.85em;
+      opacity: 0.8;
       text-align: center;
-      font-size: 0.85rem;
-      color: #94a3b8;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
   </style>
 </head>
 <body>
+  <h1>Cadastro - EstudaComIA</h1>
+  <p class="intro">
+    Preencha o formulário abaixo com atenção.  
+    O nome e o email são usados para identificar e enviar o seu material.  
+    O comprovante serve para confirmar o pagamento e liberar o acesso.  
+    O envio do produto é realizado em até 24 horas após a confirmação.
+  </p>
 
-  <div class="container">
-    <h1>Confirme seu pagamento</h1>
-    <p>Após o pagamento de <strong>R$19,90</strong>, envie seu nome, e-mail e o comprovante abaixo.<br>
-    O conteúdo será enviado em até <strong>24 horas</strong> após a confirmação.</p>
-
-    <div class="pix-box">
-      <p class="pix-key" id="pixKey">contato.estudacomia@gmail.com</p>
-      <button class="copy-btn" id="copyPix" onclick="copyPixKey()">Copiar Chave Pix</button>
-    </div>
-
-    <form action="https://formsubmit.co/contato.estudacomia@gmail.com" method="POST" enctype="multipart/form-data">
-      <input type="text" name="name" placeholder="Seu nome completo" required>
-      <input type="email" name="email" placeholder="Seu melhor e-mail" required>
-      <input type="file" name="comprovante" accept="image/*,.pdf" required>
-      <button type="submit">Enviar Comprovante</button>
-      <input type="hidden" name="_next" value="https://contatoestudacomia-sketch.github.io/estudacomia/confirmacao.html">
-      <input type="hidden" name="_captcha" value="false">
-    </form>
+  <div class="pix-section">
+    <p>Valor fixo: <strong>R$19,90</strong></p>
+    <p>Chave Pix (E-mail):</p>
+    <span id="pix-key" class="pix-key">contato.estudacomia@gmail.com</span><br>
+    <button class="copy-btn" onclick="copiarPix()">Copiar chave Pix</button>
   </div>
 
-  <footer>© 2025 Estude com IA — Todos os direitos reservados.</footer>
+  <form action="https://formsubmit.co/contato.estudacomia@gmail.com" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="nome">Nome completo</label>
+      <input type="text" id="nome" name="Nome" placeholder="Digite seu nome completo" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="Email" placeholder="Digite seu melhor e-mail" required>
+    </div>
+
+    <div class="form-group">
+      <label for="comprovante">Comprovante de pagamento</label>
+      <input type="file" id="comprovante" name="Comprovante" accept=".jpg,.jpeg,.png,.pdf" required>
+    </div>
+
+    <button type="submit">Enviar Cadastro</button>
+
+    <input type="hidden" name="_subject" value="Novo Cadastro - EstudaComIA">
+    <input type="hidden" name="_captcha" value="false">
+  </form>
+
+  <footer>
+    © 2025 EstudaComIA — Todos os direitos reservados.
+  </footer>
 
   <script>
-    function copyPixKey() {
-      const pixKey = document.getElementById('pixKey').textContent;
-      navigator.clipboard.writeText(pixKey);
-      const btn = document.getElementById('copyPix');
-      btn.textContent = "Chave copiada ✔️";
-      btn.style.background = "#0ea5e9";
-      setTimeout(() => {
-        btn.textContent = "Copiar Chave Pix";
-        btn.style.background = "#38bdf8";
-      }, 3000);
+    function copiarPix() {
+      const chavePix = document.getElementById("pix-key").innerText;
+      navigator.clipboard.writeText(chavePix).then(() => {
+        alert("Chave Pix copiada com sucesso!");
+      }).catch(() => {
+        alert("Não foi possível copiar a chave Pix.");
+      });
     }
   </script>
 </body>
-</html> e confirmar compra</button>
-    </form>
-  </main>
-
-  <footer>© 2025 Estude com IA. Todos os direitos reservados.</footer>
-
-  <div class="loading-overlay" id="loading">
-    <div class="spinner"></div>
+</html><div class="spinner"></div>
     Enviando seus dados...
   </div>
 
