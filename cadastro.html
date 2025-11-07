@@ -1,130 +1,193 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadastro | Estude com IA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmação de Pagamento | Estude com IA</title>
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #f1f5f9;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       flex-direction: column;
-      text-align: center;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 20px;
     }
 
-    h1 {
-      font-size: 2.2rem;
-      color: #38bdf8;
-      margin-bottom: 10px;
-    }
-
-    p {
-      max-width: 500px;
-      font-size: 1rem;
-      color: #cbd5e1;
-      margin-bottom: 25px;
-    }
-
-    form {
+    .container {
       background: #1e293b;
-      padding: 25px 35px;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
       width: 100%;
-      max-width: 400px;
+      max-width: 450px;
+      text-align: center;
       animation: fadeIn 0.8s ease-in-out;
     }
 
-    input, button {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-    }
-
-    input[type="file"] {
-      background: #0f172a;
-      color: #cbd5e1;
-      border: 2px dashed #38bdf8;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    input[type="file"]:hover {
-      background: #1e293b;
-      border-color: #0ea5e9;
-    }
-
-    button {
-      background: #38bdf8;
-      color: #0f172a;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #0ea5e9;
-    }
-
-    #copyPix {
-      background: none;
+    .container h1 {
+      font-size: 1.9rem;
       color: #38bdf8;
-      border: 1px solid #38bdf8;
-      transition: 0.3s;
       margin-bottom: 10px;
     }
 
-    #copyPix:hover {
-      background: #38bdf8;
-      color: #0f172a;
+    .container p {
+      color: #cbd5e1;
+      font-size: 1rem;
+      margin-bottom: 25px;
+      line-height: 1.6;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .pix-box {
+      background: #0f172a;
+      border: 2px solid #38bdf8;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .pix-key {
+      font-size: 0.95rem;
+      color: #38bdf8;
+      word-break: break-all;
+      margin-bottom: 10px;
+    }
+
+    .copy-btn {
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    .copy-btn:hover {
+      background: #0ea5e9;
+    }
+
+    form {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="file"] {
+      background: #0f172a;
+      color: #f1f5f9;
+      border: 1px solid #334155;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      width: 100%;
+      transition: border 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus {
+      border-color: #38bdf8;
+      outline: none;
+    }
+
+    input[type="file"] {
+      border: 2px dashed #38bdf8;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    input[type="file"]::-webkit-file-upload-button {
+      visibility: hidden;
+    }
+
+    input[type="file"]::before {
+      content: 'Escolher comprovante 📎';
+      display: inline-block;
+      background: #38bdf8;
+      color: #0f172a;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    input[type="file"]:hover::before {
+      background: #0ea5e9;
+    }
+
+    button[type="submit"] {
+      background: #38bdf8;
+      color: #0f172a;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background: #0ea5e9;
     }
 
     footer {
-      margin-top: 20px;
+      margin-top: 30px;
+      text-align: center;
+      font-size: 0.85rem;
       color: #94a3b8;
-      font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>Finalize seu cadastro</h1>
-  <p>
-    Para receber o conteúdo exclusivo do <strong>Estude com IA</strong>, preencha os dados abaixo com atenção.  
-    O nome e o e-mail serão usados para o envio do material.  
-    Após o pagamento de <strong>R$19,90</strong>, envie o comprovante para confirmarmos sua compra.
-  </p>
-  <p>
-    💳 <strong>Chave Pix:</strong> <span id="pixKey" style="color:#38bdf8;">contato.estudacomia@gmail.com</span><br>
-    <button id="copyPix" onclick="copyPixKey()">Copiar Chave Pix</button><br>
-    ⏰ O conteúdo será enviado em até <strong>24 horas</strong> após a confirmação.
-  </p>
+  <div class="container">
+    <h1>Confirme seu pagamento</h1>
+    <p>Após o pagamento de <strong>R$19,90</strong>, envie seu nome, e-mail e o comprovante abaixo.<br>
+    O conteúdo será enviado em até <strong>24 horas</strong> após a confirmação.</p>
 
-  <form action="https://formsubmit.co/contato.estudacomia@gmail.com" method="POST" enctype="multipart/form-data">
-    <input type="text" name="name" placeholder="Seu nome completo" required>
-    <input type="email" name="email" placeholder="Seu melhor e-mail" required>
-    <input type="file" name="comprovante" accept="image/*,.pdf" required>
-    <button type="submit">Enviar Comprovante</button>
-    <input type="hidden" name="_next" value="https://contatoestudacomia-sketch.github.io/estudacomia/confirmacao.html">
-    <input type="hidden" name="_captcha" value="false">
-  </form>
+    <div class="pix-box">
+      <p class="pix-key" id="pixKey">contato.estudacomia@gmail.com</p>
+      <button class="copy-btn" id="copyPix" onclick="copyPixKey()">Copiar Chave Pix</button>
+    </div>
 
-  <footer>© 2025 Estude com IA. Todos os direitos reservados.</footer>
+    <form action="https://formsubmit.co/contato.estudacomia@gmail.com" method="POST" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Seu nome completo" required>
+      <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+      <input type="file" name="comprovante" accept="image/*,.pdf" required>
+      <button type="submit">Enviar Comprovante</button>
+      <input type="hidden" name="_next" value="https://contatoestudacomia-sketch.github.io/estudacomia/confirmacao.html">
+      <input type="hidden" name="_captcha" value="false">
+    </form>
+  </div>
+
+  <footer>© 2025 Estude com IA — Todos os direitos reservados.</footer>
 
   <script>
     function copyPixKey() {
@@ -132,38 +195,15 @@
       navigator.clipboard.writeText(pixKey);
       const btn = document.getElementById('copyPix');
       btn.textContent = "Chave copiada ✔️";
-      btn.style.background = "#38bdf8";
-      btn.style.color = "#0f172a";
+      btn.style.background = "#0ea5e9";
       setTimeout(() => {
         btn.textContent = "Copiar Chave Pix";
-        btn.style.background = "none";
-        btn.style.color = "#38bdf8";
+        btn.style.background = "#38bdf8";
       }, 3000);
     }
   </script>
-
 </body>
-</html>nformado após a confirmação do pagamento.</p>
-
-      <label for="nome">Nome completo</label>
-      <input type="text" name="Nome" id="nome" required placeholder="Digite seu nome completo" />
-
-      <label for="email">E-mail</label>
-      <input type="email" name="Email" id="email" required placeholder="Digite seu e-mail (receberá o conteúdo aqui)" />
-
-      <p><strong>Por que pedimos seu e-mail?</strong><br>É por ele que você receberá o conteúdo digital.</p>
-
-      <label for="comprovante">Comprovante de pagamento</label>
-      <label class="file-label" for="comprovante">📎 Escolher comprovante</label>
-      <input type="file" name="Comprovante" id="comprovante" accept="image/*,application/pdf" required />
-      <div id="file-name">Nenhum arquivo selecionado</div>
-
-      <p><strong>Por que pedimos o comprovante?</strong><br>Serve para confirmar o pagamento e garantir o envio do conteúdo.</p>
-
-      <p><strong>Valor fixo:</strong> R$19,90  
-      <br><strong>Envio garantido em até 24 horas</strong> após confirmação do pagamento.</p>
-
-      <button type="submit">Enviar e confirmar compra</button>
+</html> e confirmar compra</button>
     </form>
   </main>
 
