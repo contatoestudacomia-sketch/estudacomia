@@ -1,176 +1,233 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Estude com IA</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0a0f2c, #142c80);
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro - Estude com IA</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0a0f2c, #142c80);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-        header {
-            background-color: rgba(0, 0, 0, 0.3);
-            text-align: center;
-            padding: 25px;
-            font-size: 1.8em;
-            font-weight: bold;
-        }
+    header {
+      background-color: rgba(0, 0, 0, 0.3);
+      text-align: center;
+      padding: 25px;
+      font-size: 1.8em;
+      font-weight: bold;
+    }
 
-        main {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-        }
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
 
-        form {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-            max-width: 480px;
-            width: 100%;
-        }
+    form {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      max-width: 480px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 1.6em;
-            color: #f2f2f2;
-        }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 1.6em;
+      color: #f2f2f2;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: bold;
-            color: #b0b8ff;
-        }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #b0b8ff;
+    }
 
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 18px;
-            border: none;
-            border-radius: 8px;
-            outline: none;
-            background-color: rgba(255, 255, 255, 0.15);
-            color: #fff;
-            font-size: 1em;
-        }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 1em;
+    }
 
-        /* Botão de enviar */
-        button {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 10px;
-            background-color: #00c3ff;
-            color: #0a0f2c;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background-color: #00c3ff;
+      color: #0a0f2c;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-        button:hover {
-            background-color: #00a2d8;
-        }
+    button:hover {
+      background-color: #00a2d8;
+    }
 
-        /* Botão personalizado de upload */
-        .file-label {
-            display: inline-block;
-            background-color: #00c3ff;
-            color: #0a0f2c;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-            text-align: center;
-        }
+    .file-label {
+      display: inline-block;
+      background-color: #00c3ff;
+      color: #0a0f2c;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      text-align: center;
+      width: 100%;
+    }
 
-        .file-label:hover {
-            background-color: #00a2d8;
-        }
+    .file-label:hover {
+      background-color: #00a2d8;
+    }
 
-        input[type="file"] {
-            display: none;
-        }
+    input[type="file"] {
+      display: none;
+    }
 
-        #file-name {
-            margin-top: 8px;
-            font-size: 0.9em;
-            color: #b0b8ff;
-            text-align: center;
-        }
+    #file-name {
+      margin-top: 8px;
+      font-size: 0.9em;
+      color: #b0b8ff;
+      text-align: center;
+    }
 
-        p {
-            text-align: center;
-            font-size: 0.95em;
-            color: #d0d4ff;
-            margin-bottom: 20px;
-        }
+    p {
+      text-align: center;
+      font-size: 0.95em;
+      color: #d0d4ff;
+      margin-bottom: 20px;
+    }
 
-        footer {
-            text-align: center;
-            padding: 18px;
-            font-size: 0.9em;
-            color: #ccc;
-        }
-    </style>
+    footer {
+      text-align: center;
+      padding: 18px;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+
+    /* Tela de carregamento */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(10, 15, 44, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      font-size: 1.2em;
+      font-weight: bold;
+      z-index: 9999;
+      display: none;
+    }
+
+    .spinner {
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      border-top: 4px solid #00c3ff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 15px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
+  <header>Cadastro - Estude com IA</header>
 
-<header>Cadastro - Estude com IA</header>
+  <main>
+    <form
+      action="https://formsubmit.co/contato.estudacomia@gmail.com"
+      method="POST"
+      enctype="multipart/form-data"
+      id="cadastroForm"
+    >
+      <input
+        type="hidden"
+        name="_next"
+        value="https://contatoestudacomia-sketch.github.io/estudacomia/confirmacao.html"
+      />
+      <input type="hidden" name="_captcha" value="false" />
 
-<main>
-    <form action="https://formsubmit.co/contato.estudacomia@gmail.com" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_next" value="https://contatoestudacomia-sketch.github.io/estudacomia/confirmacao.html">
-        <input type="hidden" name="_captcha" value="false">
+      <h2>Finalize seu cadastro</h2>
+      <p>Preencha os campos abaixo. O conteúdo será enviado ao e-mail informado após a confirmação do pagamento.</p>
 
-        <h2>Envie seus dados para receber o conteúdo</h2>
-        <p>Preencha os campos abaixo com atenção. O conteúdo será enviado para o e-mail informado **após a confirmação do pagamento**.</p>
+      <label for="nome">Nome completo</label>
+      <input type="text" name="Nome" id="nome" required placeholder="Digite seu nome completo" />
 
-        <label for="nome">Nome completo</label>
-        <input type="text" name="Nome" id="nome" required placeholder="Digite seu nome completo">
+      <label for="email">E-mail</label>
+      <input type="email" name="Email" id="email" required placeholder="Digite seu e-mail (receberá o conteúdo aqui)" />
 
-        <label for="email">E-mail</label>
-        <input type="email" name="Email" id="email" required placeholder="Digite seu e-mail (receberá o conteúdo aqui)">
-        <p><strong>Por que pedimos seu e-mail?</strong><br>É através dele que enviaremos o material digital após a confirmação do pagamento.</p>
+      <p><strong>Por que pedimos seu e-mail?</strong><br>É por ele que você receberá o conteúdo digital.</p>
 
-        <label for="comprovante">Comprovante de pagamento</label>
-        <label class="file-label" for="comprovante">📎 Escolher comprovante</label>
-        <input type="file" name="Comprovante" id="comprovante" accept="image/*,application/pdf" required>
-        <div id="file-name">Nenhum arquivo selecionado</div>
+      <label for="comprovante">Comprovante de pagamento</label>
+      <label class="file-label" for="comprovante">📎 Escolher comprovante</label>
+      <input type="file" name="Comprovante" id="comprovante" accept="image/*,application/pdf" required />
+      <div id="file-name">Nenhum arquivo selecionado</div>
 
-        <p><strong>Por que pedimos o comprovante?</strong><br>Serve para confirmar seu pagamento e garantir o envio do conteúdo de forma segura.</p>
+      <p><strong>Por que pedimos o comprovante?</strong><br>Serve para confirmar o pagamento e garantir o envio do conteúdo.</p>
 
-        <p><strong>Valor fixo:</strong> R$19,90  
-        <br><strong>Envio garantido em até 24 horas</strong> após a confirmação do pagamento.</p>
+      <p><strong>Valor fixo:</strong> R$19,90  
+      <br><strong>Envio garantido em até 24 horas</strong> após confirmação do pagamento.</p>
 
-        <button type="submit">Enviar e confirmar compra</button>
+      <button type="submit">Enviar e confirmar compra</button>
     </form>
-</main>
+  </main>
 
-<footer>© 2025 Estude com IA. Todos os direitos reservados.</footer>
+  <footer>© 2025 Estude com IA. Todos os direitos reservados.</footer>
 
-<script>
-    // Mostrar nome do arquivo selecionado
-    const inputFile = document.getElementById('comprovante');
-    const fileNameDisplay = document.getElementById('file-name');
-    inputFile.addEventListener('change', () => {
-        fileNameDisplay.textContent = inputFile.files.length ? inputFile.files[0].name : "Nenhum arquivo selecionado";
+  <div class="loading-overlay" id="loading">
+    <div class="spinner"></div>
+    Enviando seus dados...
+  </div>
+
+  <script>
+    // Nome do arquivo
+    const inputFile = document.getElementById("comprovante");
+    const fileNameDisplay = document.getElementById("file-name");
+    inputFile.addEventListener("change", () => {
+      fileNameDisplay.textContent = inputFile.files.length
+        ? inputFile.files[0].name
+        : "Nenhum arquivo selecionado";
     });
-</script>
 
+    // Animação de envio
+    const form = document.getElementById("cadastroForm");
+    const loading = document.getElementById("loading");
+    form.addEventListener("submit", () => {
+      loading.style.display = "flex";
+    });
+  </script>
 </body>
 </html>
