@@ -13,7 +13,7 @@
     }
 
     body {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(135deg, #0a0f2c, #1e3a8a, #2563eb);
       color: #fff;
       display: flex;
       justify-content: center;
@@ -91,11 +91,12 @@
       box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
       max-width: 420px;
       width: 100%;
-      transition: 0.3s;
+      animation: fadeIn 0.8s ease-in-out;
     }
 
-    form:hover {
-      transform: translateY(-3px);
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .form-group {
@@ -153,6 +154,21 @@
       background: #1e40af;
     }
 
+    #loading {
+      display: none;
+      text-align: center;
+      margin-top: 15px;
+      font-weight: 500;
+      color: #2563eb;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+
     footer {
       margin-top: 40px;
       font-size: 0.85em;
@@ -165,7 +181,7 @@
   <h1>Cadastro - EstudaComIA</h1>
   <p class="intro">
     Preencha o formulário abaixo com atenção.  
-    O nome e o email são usados para identificar e enviar o seu material.  
+    O nome e o e-mail são usados para identificar e enviar o seu material.  
     O comprovante serve para confirmar o pagamento e liberar o acesso.  
     O envio do produto é realizado em até 24 horas após a confirmação.
   </p>
@@ -177,7 +193,7 @@
     <button class="copy-btn" onclick="copiarPix()">Copiar chave Pix</button>
   </div>
 
-  <form action="https://formsubmit.co/contato.estudacomia@gmail.com" method="POST" enctype="multipart/form-data">
+  <form id="cadastroForm" action="https://formsubmit.co/contato.estudacomia@gmail.com" method="POST" enctype="multipart/form-data">
     <div class="form-group">
       <label for="nome">Nome completo</label>
       <input type="text" id="nome" name="Nome" placeholder="Digite seu nome completo" required>
@@ -194,6 +210,7 @@
     </div>
 
     <button type="submit">Enviar Cadastro</button>
+    <div id="loading">Enviando dados, aguarde...</div>
 
     <input type="hidden" name="_subject" value="Novo Cadastro - EstudaComIA">
     <input type="hidden" name="_captcha" value="false">
@@ -212,27 +229,15 @@
         alert("Não foi possível copiar a chave Pix.");
       });
     }
-  </script>
-</body>
-</html><div class="spinner"></div>
-    Enviando seus dados...
-  </div>
 
-  <script>
-    // Nome do arquivo
-    const inputFile = document.getElementById("comprovante");
-    const fileNameDisplay = document.getElementById("file-name");
-    inputFile.addEventListener("change", () => {
-      fileNameDisplay.textContent = inputFile.files.length
-        ? inputFile.files[0].name
-        : "Nenhum arquivo selecionado";
-    });
-
-    // Animação de envio
     const form = document.getElementById("cadastroForm");
-    const loading = document.getElementById("loading");
-    form.addEventListener("submit", () => {
-      loading.style.display = "flex";
+    const loadingText = document.getElementById("loading");
+
+    form.addEventListener("submit", function (e) {
+      loadingText.style.display = "block";
+      setTimeout(() => {
+        window.location.href = "confirmacao.html";
+      }, 2500);
     });
   </script>
 </body>
